@@ -106,7 +106,8 @@
     @font-format: false,
     @font-weight: normal,
     @font-style: normal,
-    @font-display: auto
+    @font-display: auto,
+    @font-type: false
 ) when (@font-format = false) {
     @font-face {
         font-family: @family-name;
@@ -118,17 +119,23 @@
     }
 }
 
+// When need specify font format also should define font type include
+// The available types for @font-type are 'woff', 'woff2', 'truetype', 'opentype', 'embedded-opentype', and 'svg'
+// Enclose it in single quotes
+//  _____________________________________________
+
 .lib-font-face(
     @family-name,
     @font-path,
     @font-format: false,
     @font-weight: normal,
     @font-style: normal,
-    @font-display: auto
-) when not (@font-format = false) {
+    @font-display: auto,
+    @font-type: false
+) when not (@font-format = false) and not (@font-type = false) {
     @font-face {
         font-family: @family-name;
-        src: url('@{font-path}.@{font-format}') format(@font-format);
+        src: url('@{font-path}.@{font-format}') format(@font-type);
         font-weight: @font-weight;
         font-style: @font-style;
         font-display: @font-display;
@@ -307,8 +314,8 @@
     html {
         .lib-css(font-size, @_root-font-size);
         -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-                font-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        font-size-adjust: 100%;
     }
 
     body {
@@ -631,8 +638,8 @@
     blockquote {
         &:before,
         &:after {
-        content: '';
-    }
+            content: '';
+        }
     }
 
     q {
@@ -640,9 +647,9 @@
 
         &:before,
         &:after {
-        content: '';
-        content: none;
-    }
+            content: '';
+            content: none;
+        }
     }
 
     //  Undo browser default styling
@@ -663,3 +670,4 @@
     .lib-typography-code();
     .lib-typography-blockquote();
 }
+
