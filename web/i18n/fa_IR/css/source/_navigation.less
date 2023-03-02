@@ -32,7 +32,7 @@
         cursor: pointer;
         display: block;
         font-size: 0;
-        left: 15px;
+        right: 15px;
         position: absolute;
         top: 15px;
         z-index: 14;
@@ -59,7 +59,7 @@
 
                 &:after {
                     position: absolute;
-                    right: 7px;
+                    left: 7px;
                     top: -8px;
                 }
 
@@ -75,7 +75,7 @@
 
     .nav-sections {
         -webkit-overflow-scrolling: touch;
-        .lib-css(transition, left .3s, 1);
+        .lib-css(transition, right .3s, 1);
         height: 100%;
         left: calc(~'-1 * (100% - @{active-nav-indent})');
         overflow: auto;
@@ -88,7 +88,7 @@
             font-size: 1.6rem;
             font-weight: @font-weight__bold;
             margin: 0;
-            padding: .8rem 3.5rem .8rem 2rem;
+            padding: .8rem 2rem .8rem 3.5rem;
 
             .label {
                 display: block;
@@ -112,7 +112,7 @@
 
                 &:after {
                     position: absolute;
-                    right: -40px;
+                    left: -40px;
                     top: -16px;
                 }
             }
@@ -179,9 +179,9 @@
         width: 100%;
 
         .page-wrapper {
-            .lib-css(transition, left .3s, 1);
+            .lib-css(transition, right .3s, 1);
             height: 100%;
-            left: 0;
+            right: 0;
             overflow: hidden;
             position: relative;
         }
@@ -196,13 +196,13 @@
 
     .nav-open {
         .page-wrapper {
-            left: calc(~'100% - @{active-nav-indent}');
+            right: calc(~'100% - @{active-nav-indent}');
         }
 
         .nav-sections {
             @_shadow: 0 0 5px 0 rgba(50, 50, 50, .75);
             .lib-css(box-shadow, @_shadow, 1);
-            left: 0;
+            right: 0;
             z-index: 99;
         }
 
@@ -213,7 +213,7 @@
                 display: block;
                 height: 100%;
                 position: fixed;
-                right: 0;
+                left: 0;
                 top: 0;
                 width: 100%;
                 z-index: 1;
@@ -230,9 +230,9 @@
     .nav-sections-item-title {
         background: darken(@navigation__background, 5%);
         border: solid darken(@navigation__background, 10%);
-        border-width: 0 0 1px 1px;
+        border-width: 0 1px 1px 0;
         box-sizing: border-box;
-        float: left;
+        float: right;
         height: 71px;
         padding-top: 24px;
         text-align: center;
@@ -253,8 +253,8 @@
     .nav-sections-item-content {
         .lib-clearfix();
         box-sizing: border-box;
-        float: right;
-        margin-left: -100%;
+        float: left;
+        margin-right: -100%;
         margin-top: 71px;
         width: 100%;
 
